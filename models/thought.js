@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const thoughtSchema = new mongoose.Schema({
+const thoughtSchema = new Schema({
   thoughtText: { 
     type: String, 
     required: 'text is required', 
@@ -17,18 +17,9 @@ const thoughtSchema = new mongoose.Schema({
   reactions: [],
 });
 
-const Thought = mongoose.model('Thought', thoughtSchema);
+const Thought = model('Thought', thoughtSchema);
 
 const handleError = (err) => console.error(err);
 
-Thought
-  .create({
-    thoughtText: 'That was amazing!',
-    createdAt: Date.now,
-    username: John Doe,
-    friends: [],
-  })
-  .then(result => console.log('Created new document', result))
-  .catch(err => handleError(err));
 
 module.exports = Thought;

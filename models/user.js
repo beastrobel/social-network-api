@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema(
+{
   username: { 
     type: String, 
     unique: true, 
@@ -13,25 +14,30 @@ const userSchema = new mongoose.Schema({
     unique: true, 
     trimmed: true,
     //Referenced StackOverflow ramon22 for Mongoose validate
-    validate: [validateEmail, 'Please fill a valid email address'],
-    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'] 
+   // validate: [validateEmail, 'Please fill a valid email address'],
+   // match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'] 
   },
-  thoughts: [],
-  friends: [],
-});
+  thoughts: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Thought',
+    }
+  ],
+  friends: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    }
+  ],
+},
+{
+  toJSON: {
+    virtuals: true,
+  },
+  id: false,
+}
+);
 
-const User = mongoose.model('User', userSchema);
-
-const handleError = (err) => console.error(err);
-
-User
-  .create({
-    username: 'John Doe',
-    email: 'johndoe@gmail.com',
-    toughts: [],
-    friends: [],
-  })
-  .then(result => console.log('Created new document', result))
-  .catch(err => handleError(err));
+const User = model('User', userSchema);
 
 module.exports = User;

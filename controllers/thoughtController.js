@@ -1,4 +1,6 @@
-const { User, Thought, Reaction } = require('../../models');
+// ObjectId() method for converting studentId string into an ObjectId for querying database
+const { ObjectId } = require('mongoose').Types;
+const { Thought, User } = require('../models');
 
 module.exports = {
   // Get all thoughts
