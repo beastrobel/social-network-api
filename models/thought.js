@@ -14,7 +14,7 @@ const thoughtSchema = new Schema({
     type: String, 
     required: 'username is required',
   },  
-  reactions: [],
+  //reactions: [],
 });
 
 const Thought = model('Thought', thoughtSchema);
