@@ -8,7 +8,7 @@ The challenge was to create the back-end of a social media website, where the us
 ## Usage
 
 To use the social network api, please install MongoDB and Express. The video below demonstrates the functionality:
-[social-media-api.webm](https://github.com/beastrobel/social-network-api/assets/137853377/a5911b37-fad9-4cf9-a763-09efa6b9da62)
+[social-network-api.webm](https://github.com/beastrobel/social-network-api/assets/137853377/ff1b3cb1-3a3d-4ec0-99a3-83d53b0fb88b)
 
 
 ## Contributing
