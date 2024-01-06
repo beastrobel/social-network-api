@@ -74,7 +74,7 @@ const usernames = [
     'Parker',
   ];
   
-  const thoughtText = [
+  const thoughts = [
     'Great movie!',
     'Really liked it!',
     'It was terrible.',
@@ -103,8 +103,17 @@ const usernames = [
     `${getRandomArrItem(usernames)}`;
   
   // Function to generate random thoughts that we can add to user object.
-  const getRandomThoughts = () =>
-  `${getRandomArrItem(thoughtText)}`;
+  const getRandomThoughts = (int) => {
+    const results = [];
+    for (let i = 0; i < int; i++) {
+      results.push({
+        thoughtText: getRandomArrItem(thoughts),
+        createdAt: `January 5, 2024`,
+        reactions: [],
+      });
+    }
+    return results;
+  };
   
   // Export the functions for use in seed.js
   module.exports = { getRandomName, getRandomThoughts };
