@@ -38,6 +38,19 @@ const userSchema = new Schema(
 }
 );
 
+// friendCount virtual
+userSchema
+  .virtual('friendCount')
+  // Getter
+  .get(function () {
+    return `${this.friends}`;
+  })
+  // Setter to set the first and last name
+  .set(function (v) {
+    const friends = v.length;
+    this.set({ friends });
+  });
+
 const User = model('User', userSchema);
 
 module.exports = User;
