@@ -95,7 +95,7 @@ async getSingleUser(req, res) {
 async removeFriend(req, res) {
   try {
     const user = await User.findOneAndUpdate(
-      { _id: req.params.thoughtId },
+      { _id: req.params.userId },
       { $pull: { friend: { friendId: req.params.friendId } } },
       { runValidators: true, new: true }
     );
