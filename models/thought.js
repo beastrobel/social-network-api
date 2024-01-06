@@ -14,14 +14,20 @@ const thoughtSchema = new Schema({
     type: String, 
     required: 'username is required',
   },  
-  reactions: [],
+  reactions: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Reaction',
+    }
+  ],
+},
   {
     toJSON: {
       virtuals: true,
     },
     id: false,
   }
-});
+);
 
 // reactionCount virtual
 thoughtSchema

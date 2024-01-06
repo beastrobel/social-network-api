@@ -1,20 +1,22 @@
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-// const reactionSchema = new mongoose.Schema({
-//   reactionId,
-//   reactionBody: {
-//     type: String, 
-//     required: 'text is required',
-//     max: 280,
-//   },  
-//   createdAt: { 
-//     type: Date, 
-//     default: Date.now, 
-//   },
-//   username: {
-//     type: String, 
-//     required: 'username is required',
-//   },  
-// });
+const reactionSchema = new mongoose.Schema({
+   reactionId,
+   reactionBody: {
+     type: String, 
+     required: 'text is required',
+     max: 280,
+   },  
+   createdAt: { 
+     type: Date, 
+     default: Date.now, 
+   },
+   username: {
+     type: String, 
+     required: 'username is required',
+   },  
+ });
 
-// module.exports = reactionSchema;
+ const Reaction = model('Reaction', reactionSchema);
+
+ module.exports = Reaction;
