@@ -14,8 +14,27 @@ const thoughtSchema = new Schema({
     type: String, 
     required: 'username is required',
   },  
-  //reactions: [],
+  reactions: [],
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    id: false,
+  }
 });
+
+// reactionCount virtual
+thoughtSchema
+  .virtual('reactionCount')
+  // Getter
+  .get(function () {
+    return `${this.reactions}`;
+  })
+  // Setter to set the first and last name
+  .set(function (v) {
+    const reactions = v.length;
+    this.set({ reactions });
+  });
 
 const Thought = model('Thought', thoughtSchema);
 
